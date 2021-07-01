@@ -20,6 +20,58 @@
             background-repeat: no-repeat;
         }
 
+        #logoutText{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 17%;
+            top: 85%;
+        }
+
+        #ratingBox{
+            width: 100px;
+            position: absolute;
+            top: 61%;
+            left: 66%;
+        }
+
+        #submitRating{
+            position: absolute;
+            top: 61%;
+            left: 72%;
+        }
+
+        .checked {
+            color: orange;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            font-size: 72px;
+            top: 75%;
+        }
+
+        .unchecked{
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            color: white;
+            font-size: 72px;
+            top: 75%;
+        }
+
+        #rate{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 40%;
+            top: 60%;
+        }
+
+        #account{
+            position: absolute;
+            left: 45%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+            top: 3%;
+
+        }
+
         .active{
             background-size: 50%;
             color: white;
@@ -210,48 +262,12 @@
             </style>
 
 <!--Login Button-->
-        <button onclick="document.getElementById('id01').style.display='block'" id="loginButton">Login</button>
-
-        <div id="id01" class="modal">
-            
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            </div>
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                    
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">&nbsp Forgot <a href="#">password?</a></span>
-                <span class="psw"><a href="#">Create </a>an account?</span>
-            </div>
-            </form>
-            </div>
-
-            <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            </script>
-
+        {{#if user}}
+        <h1 id="account">You are logged in as {{user.username}}</h1>
+        <a href="/login/logout"><button id="loginButton">Logout</button></a>
+        {{else}}
+        <a href="accountLogin"><button id="loginButton">Login</button></a>
+        {{/if}}
             <!--Middle Container for Genre-->
             <ul>
                 <li><a href="action" >Action</a></li>
@@ -277,6 +293,50 @@
                     <h2 id="movieDesc">Dumped and depressed, English rose Iris agrees to swap homes with similarly unlucky in love Californian Amanda for a 
                         much-needed break. Iris finds herself in a palatial Hollywood mansion while Amanda navigates the lanes of a picture-perfect English village. 
                         Soon enough, both lovelorn ladies bump into local lads perfect for a romantic pick-me-up..</h2>
+                    {{#if user}}
+                    <h1 id="rate">Rate This Movie (out of 5): </h1>
+                    <form method="post" action="ratingHoliday">
+                    <input type="number" name="ratingHoliday" id="ratingBox" placeholder="Rating">
+                    <input type="submit" value="submit" id="submitRating">
+                    </form>
+                    <h2 id="logoutText">Note: Log Out to Save All Changes</h2>
+                    {{/if}}
+                    
+                    {{#if rateHoliday1}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateHoliday2}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateHoliday3}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateHoliday4}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateHoliday5}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
                 </div>
             </div>
 

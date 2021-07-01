@@ -13,8 +13,15 @@ var bcrypt = require('bcryptjs');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('examLogin', {error: req.flash('error')});
+  res.render('accountLogin', {error: req.flash('error')});
+});
 
+router.post('/',
+  // depends on the fiels "isAdmin", redirect to the different path: admin or notAdmin
+  passport.authenticate('local', { failureRedirect: '/accountLogin', failureFlash: true, error: true}),
+  function(req, res,next) {
+      res.redirect('/');
+      console.log("logged in");
 });
 
 router.get('/logout', function(req, res){
@@ -72,36 +79,8 @@ function loggedIn(req, res, next) {
   if (req.user) {
     next();
   } else {
-    res.redirect('/');
+    res.redirect('/login');
   }
 }
-
-router.get('/createAccount',function(req, res) {
-    res.render('createAccount', { user: req.user }); // signup.hbs
-});
-
-router.post('/createAccount', function(req, res, next) {
-  client.query('SELECT * FROM examusers WHERE username = $1', [req.body.username], function(err, result) {
-    if (err) {
-      console.log("unable to query SELECT");
-      next(err);
-    }
-    if (result.rows.length > 0) {
-        console.log("user already exists");
-        res.render('createAccount', {user: req.user , exist: "true" });
-    }
-    else{
-      console.log("user doesn't exist");
-      client.query('INSERT INTO examusers (username, password, isAdmin) VALUES($1, $2, $3)', [req.body.username, req.body.password, req.body.isadmin], function(err, result) {
-        if (err) {
-          console.log("unable to query INSERT");
-          next(err);
-        }
-        console.log("User Account Creation Successful");
-        res.render('createAccount', {user: req.user , success: "true" });
-      });
-    }
-  });
-});
 
 module.exports = router;

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Mission: Impossible - Jon Movies</title>
+    <title>Create An Account - Jon Movies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/f2d1f6a6fa.js" crossorigin="anonymous"></script>
@@ -12,54 +12,12 @@
         html, body {
             min-height: 100%;
             min-width: 100%;
-            background-image: url(https://external-preview.redd.it/Ef5FDK5dN340elsCmR-EQZ7RPmQe2yIYDbIH7_SpUR0.jpg?auto=webp&s=37db360447f51b4327daea1193be74f1cb7cd93f);
+            background-image: url(https://i.pinimg.com/originals/09/24/4c/09244c7f7dd4d17b0484370f32db6641.gif);
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
             background-repeat: no-repeat;
-        }
-
-        #account{
-            position: absolute;
-            left: 45%;
-            color: white;
-            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
-            top: 3%;
-
-        }
-
-        .active{
-            background-size: 50%;
-            color: white;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-            font-weight: bolder;
-        }
-
-        .movie{
-            height: 50%;
-            position: absolute;
-            border: 2px solid black;
-        }
-
-        #movieTitle{
-            position: absolute;
-            color: white;
-            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-            left: 40%;
-            font-size: 72px;
-        }
-
-        #movieDesc{
-            position: absolute;
-            color: white;
-            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-            left: 40%;
-            top: 30%;
-        }
-
-        #movieRating{
-            
         }
 
         #title{
@@ -84,7 +42,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: red;
+            background-color: darkslateblue;
             opacity: 75%;
             }
 
@@ -120,7 +78,7 @@
 
         /* Set a style for all buttons */
         button {
-            background-color: darkgoldenrod;
+            background-color: darkblue;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -219,37 +177,50 @@
 
 <!--Login Button-->
         {{#if user}}
-        <h1 id="account">You are logged in as {{user.username}}</h1>
         <a href="/login/logout"><button id="loginButton">Logout</button></a>
         {{else}}
         <a href="accountLogin"><button id="loginButton">Login</button></a>
         {{/if}}
+
             <!--Middle Container for Genre-->
             <ul>
-                <li><a href="action" class="active">Action</a></li>
-                <li><a href="comedy" >Comedy</a></li>
-                <li><a href="horror" >Horror</a></li>
-                <li><a href="romance">Romance</a></li>
-                <li><a href="drama">Drama</a></li>
+                <li><a href="/action">Action</a></li>
+                <li><a href="/comedy">Comedy</a></li>
+                <li><a href="/horror">Horror</a></li>
+                <li><a href="/romance">Romance</a></li>
+                <li><a href="/drama">Drama</a></li>
             </ul>
 
             <div class="container">
                 <div class=".col-sm">
                     <a href="/"><div id="title"><i class="fas fa-video">  Jon Movies</i></div></a>
                 </div>
-                <div class=".col-sm"></div>
+                <div class=".col-sm">
+                    {{#if user}}
+                    <h1 style="color: white; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">You are already logged in as <strong>{{user.username}}</strong></h1>
+                    {{else}}
+                    <h1 style="color: white;">Create an Account</h1>
+                    <form method="post" action="accountSignup">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="submit" value="Submit">
+
+                        {{#if exist}}
+                        <h1 style="color: white;">Username Already Exists</h1>
+                        {{/if}}
+
+                        {{#if success}}
+                        <h1 style="color: white;">User Account Creation Successful</h1>
+                        {{/if}}
+                    {{/if}}
+                    </form>
+                </div>
                 <div class=".col-sm"></div>
             </div>
 
-            <!--Movie Covers-->
             <div class="container">
-                <div class=".col-md">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/71aqBa2ZQPL._SY606_.jpg" class="movie">
-                    <h1 id="movieTitle">Mission: Impossible</h1>
-                    <h2 id="movieDesc">Mission: Impossible is a series of American action spy films both based on and a follow-on from the television series of the same name created by Bruce Geller. 
-                        The series is co-produced by and stars Tom Cruise, whose character is Ethan Hunt, an agent of the Impossible Missions Force.</h2>
+                <div class="col.md">
                 </div>
             </div>
-
 </body>
 </html>

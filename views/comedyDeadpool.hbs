@@ -12,12 +12,73 @@
         html, body {
             min-height: 100%;
             min-width: 100%;
-            background-image: url(https://i.ytimg.com/vi/e5TETCgSBV8/maxresdefault.jpg);
+            background-image: url(https://i.pinimg.com/originals/47/be/3c/47be3c18e8fd309e74478831ad9c7365.jpg);
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        #logoutText{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 17%;
+            top: 85%;
+        }
+
+        #ratingBox{
+            width: 100px;
+            position: absolute;
+            top: 61%;
+            left: 66%;
+        }
+
+        #submitRating{
+            position: absolute;
+            top: 61%;
+            left: 72%;
+        }
+
+        .checked {
+            color: orange;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            font-size: 72px;
+            top: 75%;
+        }
+
+        .unchecked{
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            color: white;
+            font-size: 72px;
+            top: 75%;
+        }
+
+        #rate{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 40%;
+            top: 60%;
+        }
+
+        #account{
+            position: absolute;
+            left: 45%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+            top: 3%;
+
+        }
+
+        #account{
+            position: absolute;
+            left: 45%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+            top: 3%;
+
         }
 
         .active{
@@ -209,48 +270,12 @@
             </style>
 
 <!--Login Button-->
-        <button onclick="document.getElementById('id01').style.display='block'" id="loginButton">Login</button>
-
-        <div id="id01" class="modal">
-            
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            </div>
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                    
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">&nbsp Forgot <a href="#">password?</a></span>
-                <span class="psw"><a href="#">Create </a>an account?</span>
-            </div>
-            </form>
-            </div>
-
-            <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            </script>
-
+        {{#if user}}
+        <h1 id="account">You are logged in as {{user.username}}</h1>
+        <a href="/login/logout"><button id="loginButton">Logout</button></a>
+        {{else}}
+        <a href="accountLogin"><button id="loginButton">Login</button></a>
+        {{/if}}
             <!--Middle Container for Genre-->
             <ul>
                 <li><a href="action" >Action</a></li>
@@ -276,6 +301,50 @@
                     <h2 id="movieDesc">Wade Wilson (Ryan Reynolds) is a former Special Forces operative who now works as a mercenary. His world comes crashing down when evil scientist Ajax (Ed Skrein) tortures, 
                         disfigures and transforms him into Deadpool. The rogue experiment leaves Deadpool with accelerated healing powers and a twisted sense of humor. 
                         With help from mutant allies Colossus and Negasonic Teenage Warhead (Brianna Hildebrand), Deadpool uses his new skills to hunt down the man who nearly destroyed his life.</h2>
+                    {{#if user}}
+                    <h1 id="rate">Rate This Movie (out of 5): </h1>
+                    <form method="post" action="ratingDeadpool">
+                    <input type="number" name="ratingDeadpool" id="ratingBox" placeholder="Rating">
+                    <input type="submit" value="submit" id="submitRating">
+                    </form>
+                    <h2 id="logoutText">Note: Log Out to Save All Changes</h2>
+                    {{/if}}
+                    
+                    {{#if rateDeadpool1}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateDeadpool2}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateDeadpool3}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateDeadpool4}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star unchecked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
+                    {{#if rateDeadpool5}}
+                    <span class="fa fa-star checked" style="position: absolute; left: 19%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 23%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 27%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 31%;"></span>
+                    <span class="fa fa-star checked" style="position: absolute; left: 35%;"></span>
+                    {{/if}}
                 </div>
             </div>
 

@@ -20,6 +20,39 @@
             background-repeat: no-repeat;
         }
 
+        #readme{
+            position: absolute;
+            height: 8%;
+            right: 2%;
+            top: 18%;
+        }
+
+        #account{
+            position: absolute;
+            left: 45%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+            top: 3%;
+
+        }
+
+        #comingCover{
+            position: absolute;
+            height: 50%;
+            top: 35%;
+            border: 2px solid white;
+            left: 60%;
+        }
+
+        #comingSoon{
+            position: absolute;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 75px;
+            left: 57%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+        }
+
         #newCover{
             position: absolute;
             height: 50%;
@@ -81,15 +114,6 @@
 
         @media (min-width: 1120px), (min-height: 630px) {
             body { background-size: auto; }
-        }
-
-        input[type=text], input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
         }
 
         /* Set a style for all buttons */
@@ -192,33 +216,40 @@
             </style>
 
 <!--Login Button-->
-        <button onclick="document.getElementById('id01').style.display='block'" id="loginButton">Login</button>
 
+        {{#if user}}
+        <h1 id="account">You are logged in as {{user.username}}</h1>
+        <a href="/login/logout"><button id="loginButton">Logout</button></a>
+        {{else}}
+        <a href="accountLogin"><button id="loginButton">Login</button></a>
+        {{/if}}
+        
         <div id="id01" class="modal">
             
-        <form class="modal-content animate" action="/action_page.php" method="post">
+        <form class="modal-content animate" action="/login" method="post">
             <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             </div>
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="username" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="password" required>
                     
                 <button type="submit">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
-
+            
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                 <span class="psw">&nbsp Forgot <a href="#">password?</a></span>
-                <span class="psw"><a href="#">Create </a>an account?</span>
+                <span class="psw"><a href="accountSignup">Create </a>an account?</span>
             </div>
+
             </form>
             </div>
 
@@ -253,8 +284,15 @@
 
             <div class="container">
                 <div class="col.md">
+                    <a href="https://docs.google.com/document/d/1tQDCcSWLU_wpFdwA6Hm_PXqlQSU2OPSJQsEiQ1JLp9A/edit?usp=sharing" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Text-x-readme.svg/1024px-Text-x-readme.svg.png" id="readme"></a>
+                </div>
+                <div class="col.md">
                     <div id="newRelease">Newly Released</div>
                     <a href="actionEndgame"><img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg" id="newCover"></a>
+                </div>
+                <div class="col.md">
+                    <div id="comingSoon">Coming Soon</div>
+                    <img src= "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-rise-of-skywalker-theatrical-poster-1000_ebc74357.jpeg?region=0%2C0%2C891%2C1372" id="comingCover">
                 </div>
             </div>
 </body>

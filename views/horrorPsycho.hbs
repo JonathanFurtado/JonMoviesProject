@@ -20,6 +20,15 @@
             background-repeat: no-repeat;
         }
 
+        #account{
+            position: absolute;
+            left: 45%;
+            color: white;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+            top: 3%;
+
+        }
+
         .active{
             background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9cb43e4d-9435-4282-bd4f-da09ffacdfa7/dcns0bv-ae11a25a-5408-4577-b249-130596cd1ea5.gif?t
             oken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMC
@@ -214,48 +223,12 @@
             </style>
 
 <!--Login Button-->
-        <button onclick="document.getElementById('id01').style.display='block'" id="loginButton">Login</button>
-
-        <div id="id01" class="modal">
-            
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            </div>
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                    
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">&nbsp Forgot <a href="#">password?</a></span>
-                <span class="psw"><a href="#">Create </a>an account?</span>
-            </div>
-            </form>
-            </div>
-
-            <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            </script>
-
+        {{#if user}}
+        <h1 id="account">You are logged in as {{user.username}}</h1>
+        <a href="/login/logout"><button id="loginButton">Logout</button></a>
+        {{else}}
+        <a href="accountLogin"><button id="loginButton">Login</button></a>
+        {{/if}}
             <!--Middle Container for Genre-->
             <ul>
                 <li><a href="action" >Action</a></li>
