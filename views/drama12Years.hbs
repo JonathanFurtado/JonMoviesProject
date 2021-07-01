@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>12 Years a Slave - Jon Movies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/f2d1f6a6fa.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        html, body {
+            min-height: 100%;
+            min-width: 100%;
+            background-image: url(https://d1i4t8bqe7zgj6.cloudfront.net/12-years-a-slave.jpg);
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .active{
+            background-size: 50%;
+            color: white;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            font-weight: bolder;
+        }
+
+        .movie{
+            height: 50%;
+            position: absolute;
+            border: 2px solid black;
+            left: 20%;
+        }
+
+        #movieTitle{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 40%;
+            font-size: 72px;
+        }
+
+        #movieDesc{
+            position: absolute;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            left: 40%;
+            top: 30%;
+        }
+
+        #movieRating{
+            
+        }
+
+        #title{
+            position: absolute;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 75px;
+            left: 2%;
+            top:-6px;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+
+        }
+
+        #loginButton{
+            width: auto;
+            margin-top: -5%;
+            margin-left: 94%;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: brown;
+            opacity: 75%;
+            }
+
+            li {
+            float: left;
+            }
+
+            li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px 155px;
+            text-decoration: none;
+            }
+
+            li a:hover {
+            background-color: #111;
+            color: white;
+            }
+
+        @media (min-width: 1120px), (min-height: 630px) {
+            body { background-size: auto; }
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: darkorange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            }
+
+        button:hover {
+            opacity: 0.8;
+            }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+            }
+
+        /* Center the image and position the close button */
+        .container {
+            padding: 16px;
+            }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+            }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+            }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+            }
+
+        .close:hover, .close:focus {
+            color: red;
+            cursor: pointer;
+            }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+            }
+
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)} 
+            to {-webkit-transform: scale(1)}
+            }
+            
+        @keyframes animatezoom {
+            from {transform: scale(0)} 
+            to {transform: scale(1)}
+            }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+            }
+                    
+            </style>
+
+<!--Login Button-->
+        <button onclick="document.getElementById('id01').style.display='block'" id="loginButton">Login</button>
+
+        <div id="id01" class="modal">
+            
+        <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                    
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">&nbsp Forgot <a href="#">password?</a></span>
+                <span class="psw"><a href="#">Create </a>an account?</span>
+            </div>
+            </form>
+            </div>
+
+            <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            </script>
+
+            <!--Middle Container for Genre-->
+            <ul>
+                <li><a href="action" >Action</a></li>
+                <li><a href="comedy" >Comedy</a></li>
+                <li><a href="horror" >Horror</a></li>
+                <li><a href="romance">Romance</a></li>
+                <li><a href="drama" class="active">Drama</a></li>
+            </ul>
+
+            <div class="container">
+                <div class=".col-sm">
+                    <a href="/"><div id="title"><i class="fas fa-video">  Jon Movies</i></div></a>
+                </div>
+                <div class=".col-sm"></div>
+                <div class=".col-sm"></div>
+            </div>
+
+            <!--Movie Covers-->
+            <div class="container">
+                <div class=".col-md">
+                    <img src="https://steemitimages.com/640x0/https://lalarme23.files.wordpress.com/2014/02/12_years_a_slave_posterart.jpg" class="movie">
+                    <h1 id="movieTitle">12 Years a Slave</h1>
+                    <h2 id="movieDesc">In the years before the Civil War, Solomon Northup (Chiwetel Ejiofor), a free black man from upstate New York, is kidnapped 
+                        and sold into slavery in the South. Subjected to the cruelty of one malevolent owner (Michael Fassbender), he also finds unexpected kindness from 
+                        another, as he struggles continually to survive and maintain some of his dignity. Then in the 12th year of the disheartening ordeal, a chance meeting 
+                        with an abolitionist from Canada changes Solomon's life forever.</h2>
+                </div>
+            </div>
+
+</body>
+</html>
